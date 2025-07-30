@@ -46,4 +46,11 @@ public class OuterClass {
 	}
 	
 	
+	class Inner{
+		
+		void printName() {
+			System.out.println(name);
+		}
+		
+	}
 }
