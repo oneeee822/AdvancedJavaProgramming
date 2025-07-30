@@ -8,6 +8,11 @@ public class TestInner {
 		String str = obj1.toString();
 
 		System.out.println(str);
+		
+		//Inner클래스 선언 방법 
+		OuterClass.Inner inObj = obj1.new Inner();
+		
+		inObj.printName();
 	}
 
 }
