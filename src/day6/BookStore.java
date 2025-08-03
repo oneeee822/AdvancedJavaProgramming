@@ -20,9 +20,7 @@ public class BookStore {
 		
 		book2.printInfo();
 		System.out.println(book2.salePrice());
-		
-		Book book3 = new Book();
-		
+	
 		
 	}
 
