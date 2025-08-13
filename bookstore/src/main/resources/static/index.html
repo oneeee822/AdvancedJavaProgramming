@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TUB 환영합니다</title>
+  <meta name="description" content="Technische Universität Berlin 방문을 환영합니다." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121937;
+      --fg: #e6e9f3;
+      --muted: #b9bfd6;
+      --brand: #5ee1ff;
+      --brand-2: #8f78ff;
+      --accent: #60ffa8;
+      --card: #0f1530;
+      --border: #1f2a52;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f9ff;
+        --bg-soft: #eef3ff;
+        --fg: #0d1020;
+        --muted: #3b4260;
+        --brand: #0077ff;
+        --brand-2: #7a3cff;
+        --accent: #0abf7b;
+        --card: #ffffff;
+        --border: #dfe6ff;
+        --shadow: 0 8px 24px rgba(17, 23, 52, .12), inset 0 1px 0 rgba(255,255,255,.6);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, "Apple SD Gothic Neo", "Malgun Gothic", Arial, "Helvetica Neue", sans-serif;
+      color: var(--fg); background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      line-height: 1.6;
+    }
+
+    /* Layout */
+    .container { width: min(1100px, 90%); margin-inline: auto; }
+    header { position: sticky; top: 0; z-index: 30; backdrop-filter: blur(10px); background: color-mix(in oklab, var(--bg) 75%, transparent); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; gap: .65rem; align-items: center; text-decoration: none; color: var(--fg); font-weight: 700; letter-spacing: .2px; }
+    .logo { width: 28px; height: 28px; border-radius: 8px; background: conic-gradient(from 220deg at 50% 50%, var(--brand), var(--brand-2) 40%, var(--accent) 80%, var(--brand)); box-shadow: var(--shadow); }
+    .nav a { color: var(--fg); text-decoration: none; font-weight: 600; opacity: .9; }
+    .nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
+    .nav a:hover { opacity: 1; }
+
+    /* Hero */
+    .hero { padding: 70px 0 50px; position: relative; overflow: hidden; }
+    .hero::before { content:""; position: absolute; inset: -10% -20% auto -20%; height: 60%; background: radial-gradient(60% 60% at 50% 10%, color-mix(in oklab, var(--brand) 40%, transparent) 0%, transparent 70%); filter: blur(40px);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; }
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin: 0 0 10px; }
+    .lead { font-size: clamp(1rem, 1.2vw, 1.125rem); color: var(--muted); margin: 0 0 24px; }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { border: 1px solid var(--border); background: linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, #fff 10%), var(--card)); color: var(--fg); padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 700; letter-spacing: .2px; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: linear-gradient(130deg, color-mix(in oklab, var(--brand) 25%, var(--card) 75%), color-mix(in oklab, var(--brand-2) 25%, var(--card) 75%)); border-color: color-mix(in oklab, var(--brand) 40%, var(--border) 60%); }
+
+    /* Card grid */
+    .section { padding: 48px 0; }
+    .section h2 { font-size: clamp(1.25rem, 2.6vw, 1.8rem); margin: 0 0 20px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-12 { grid-column: span 12; }
+    @media (max-width: 900px) { .col-4, .col-6 { grid-column: span 12; } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); }
+    .card .kicker { font-weight: 700; font-size: .8rem; letter-spacing: .3px; color: var(--accent); text-transform: uppercase; }
+    .card h3 { margin: 6px 0 8px; }
+    .muted { color: var(--muted); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: .95rem; }
+
+    /* Simple details summary */
+    details { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; box-shadow: var(--shadow); }
+    summary { cursor: pointer; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="홈으로">
+        <span class="logo" aria-hidden="true"></span>
+        <span>TUB Welcome</span>
+      </a>
+      <nav aria-label="주요">
+        <ul>
+          <li><a href="#about">소개</a></li>
+          <li><a href="#info">안내</a></li>
+          <li><a href="#events">이벤트</a></li>
+          <li><a href="#contact">문의</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>TUB에 오신 것을 환영합니다 🎓</h1>
+          <p class="lead">Technische Universität Berlin 방문/입학/교환을 환영해요. 아래에서 캠퍼스 안내, 오늘의 이벤트, 필수 체크리스트를 빠르게 확인하세요.</p>
+          <div class="cta">
+            <a class="btn primary" href="#info">빠른 시작 가이드</a>
+            <a class="btn" href="#events">오늘의 이벤트</a>
+          </div>
+        </div>
+        <div>
+          <div class="card" role="img" aria-label="TUB 캠퍼스 추상 일러스트">
+            <div class="kicker">캠퍼스 한눈에</div>
+            <h3 style="margin-top:6px">Charlottenburg · Adlershof · EUREF</h3>
+            <p class="muted">주요 캠퍼스 위치와 연구 클러스터를 살짝 소개합니다. 자세한 맵은 아래 링크에서 확인하세요.</p>
+            <a class="btn" style="margin-top:10px" href="#map">캠퍼스 맵 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container grid">
+        <div class="col-6">
+          <div class="card">
+            <div class="kicker">About</div>
+            <h3>왜 베를린의 TUB인가?</h3>
+            <p class="muted">공대 중심의 연구·산학 연계, 국제적인 커뮤니티, 그리고 활발한 스타트업 생태계까지—TUB는 실험하기 좋은 도시 한복판에 있습니다.</p>
+            <ul>
+              <li>국제 교류 프로그램 및 영어 트랙 다수</li>
+              <li>산업체 협력 프로젝트·인턴십 기회</li>
+              <li>활발한 학내 동아리와 메이커 문화</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-6" id="map">
+          <div class="card">
+            <div class="kicker">Map</div>
+            <h3>캠퍼스 맵 / 길찾기</h3>
+            <p class="muted">처음이면 <strong>Hauptgebäude (Main Building)</strong>를 기준으로 동선을 잡아보세요. S+U Zoologischer Garten에서 도보/버스 접근이 편합니다.</p>
+            <details>
+              <summary>대중교통 팁 펼치기</summary>
+              <ul>
+                <li>독일에서는 대체로 지하철 내 음주는 금지(노선별 규정 확인).</li>
+                <li>기차역 내부 표지판의 <em>Ausgang</em>은 출구, <em>Gleis</em>는 승강장을 뜻해요.</li>
+              </ul>
+            </details>
+            <a class="btn" style="margin-top:12px" href="#contact">방문 문의</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="info" class="section" aria-labelledby="quickstart">
+      <div class="container">
+        <h2 id="quickstart">빠른 시작 가이드</h2>
+        <div class="grid">
+          <div class="col-4">
+            <div class="card">
+              <div class="kicker">1 · 필수</div>
+              <h3>등록 & 계정</h3>
+              <p class="muted">학생 계정, 도서관 카드, 와이파이( eduroam )를 먼저 셋업하세요.</p>
+              <ul>
+                <li>eduroam 설정 파일 다운로드</li>
+                <li>학생 포털(시험·수강신청) 접근</li>
+                <li>학기권 교통권(필요 시) 확인</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="kicker">2 · 생활</div>
+              <h3>생활 팁</h3>
+              <p class="muted">로컬 슈퍼 (Rewe, Lidl), 약국(Apotheke), 드럭스토어(Rossmann) 위치를 저장해두세요.</p>
+              <ul>
+                <li>현금보다 카드/모바일 결제 보편</li>
+                <li>일요일엔 대부분 휴무</li>
+                <li>재활용(분리수거) 규칙 숙지</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="kicker">3 · 학업</div>
+              <h3>수업 & 프로젝트</h3>
+              <p class="muted">GitHub Classroom, Moodle, Zoom 등 협업 도구를 미리 준비하면 수업 적응이 쉬워요.</p>
+              <ul>
+                <li>팀 프로젝트용 레포 템플릿</li>
+                <li>캠퍼스 프린팅 위치</li>
+                <li>스터디룸 예약 방법</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="section" aria-labelledby="today-events">
+      <div class="container">
+        <h2 id="today-events">이벤트 & 모임</h2>
+        <div class="grid">
+          <div class="col-6">
+            <div class="card">
+              <div class="kicker">오늘</div>
+              <h3>캠퍼스 투어 · 신입 오리엔테이션</h3>
+              <p class="muted">메인 빌딩 로비에서 10:00 시작 · 사전 등록자 우선</p>
+              <a class="btn" href="#">참가 신청</a>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="kicker">이번 주</div>
+              <h3>개발 스터디 · 디자인 씽킹 워크숍</h3>
+              <p class="muted">초보/중급 트랙 세션이 별도로 운영됩니다. 현장 신청 가능.</p>
+              <a class="btn" href="#">세부 일정</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container grid">
+        <div class="col-6">
+          <h2 id="contact-title">문의</h2>
+          <div class="card">
+            <p class="muted">궁금한 점이 있나요? 아래 양식으로 연락 주세요. 담당자가 영업일 기준으로 답변드립니다.</p>
+            <form onsubmit="event.preventDefault(); this.reset(); alert('문의가 접수되었습니다!');" aria-label="문의 양식">
+              <label>이름<br />
+                <input required name="name" placeholder="홍길동" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg)" />
+              </label>
+              <br /><br />
+              <label>이메일<br />
+                <input type="email" required name="email" placeholder="you@example.com" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg)" />
+              </label>
+              <br /><br />
+              <label>메시지<br />
+                <textarea required name="message" rows="4" placeholder="문의 내용을 작성해주세요" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--fg)"></textarea>
+              </label>
+              <br /><br />
+              <button class="btn primary" type="submit">보내기</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-6">
+          <h2>자주 묻는 질문</h2>
+          <div class="card">
+            <details>
+              <summary>eduroam이 연결되지 않아요</summary>
+              <p class="muted">운영체제별 설정 파일을 다시 설치하고, 기존 프로파일/네트워크를 삭제 후 재시도하세요.</p>
+            </details>
+            <br />
+            <details>
+              <summary>수업 신청 일정은 어디서 보나요?</summary>
+              <p class="muted">학사 포털의 학기별 공지와 각 과별 안내 페이지를 확인하세요.</p>
+            </details>
+            <br />
+            <details>
+              <summary>캠퍼스 투어는 누구나 참여 가능한가요?</summary>
+              <p class="muted">대부분의 투어는 예비/신입생 우선이며, 잔여석에 한해 일반 방문객도 가능합니다.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> TUB Welcome. 비공식 안내 페이지 샘플.</span>
+    </div>
+  </footer>
+
+  <script>
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
