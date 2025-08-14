@@ -1,12 +1,19 @@
 package com.tub.bookstore.resources;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Book {
 
+	@Id
 	private String id;
 	private String title;
 	private String author;
 	private String description;
 	private double price;
+	
+	public Book(){}
 	
 	public Book(String id, String title, String author, String description, double price) {
 		super();
